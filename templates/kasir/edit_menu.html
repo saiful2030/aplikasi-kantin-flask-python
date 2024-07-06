@@ -1,0 +1,58 @@
+{%extends 'base_kasir.html'%}
+
+{%block title%}Edit Menu{%endblock%}
+{%block content%}
+<div class="main-container">
+    <div class="xs-pd-20-10 pd-ltr-20">
+        <div class="title pb-20">
+            <h2 class="h3 mb-0">Kantin Amikom</h2>
+        </div>
+
+        <div class="pd-20 card-box mb-30">
+            <div class="clearfix mb-20">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Edit Menu</h4>
+                </div>
+                <div class="pull-right">
+                    <a href="/tambah_menu/" class="btn btn-primary" rel="content-y" data-toggle="collapse"
+                        role="button">Tambah Menu</a>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">username</th>
+                        <th scope="col">Menu</th>
+                        <th scope="col">deskripsi</th>
+                        <th scope="col">harga</th>
+                        <th scope="col">kategori</th>
+                        <th scope="col">action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {%for row in hasil%}
+                    <tr>
+                        <th scope="row">{{row.0}}</th>
+                        <td>{{row.1}}</td>
+                        <td>{{row.2}}</td>
+                        <td>{{row.3}}</td>
+                        <td>{{row.4}}</td>
+                        <td>
+                            <a href="/ubah_menu/{{row.0}}" class="btn btn-warning"> Ubah </a>
+                            <a href="/hapus_menu/{{row.0}}" class="btn btn-danger"
+                                onclick="return confirm('yakin akan menghapus {{row.1}} ?')"> Hapus </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+    </div>
+</div>
+</div>
+{%endblock%}

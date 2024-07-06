@@ -1,0 +1,63 @@
+{% extends 'base_kasir.html' %}
+
+{% block title %}Order{% endblock %}
+{% block content %}
+<div class="main-container">
+    <div class="xs-pd-20-10 pd-ltr-20">
+        <div class="title pb-20">
+            <h2 class="h3 mb-0">Kantin Amikom</h2>
+        </div>
+
+        <div class="pd-20 card-box mb-30">
+            {% for username, data in orders_by_user.items() %}
+            <div class="clearfix mb-20">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Pesanan untuk {{ username }}</h4>
+                </div>
+                <div class="pull-right">
+                    <h4 class="text-blue h4">Total Harga: {{ data['total_price'] }}00</h4>
+                </div>
+            </div>
+            <table class="data-table table stripe hover nowrap">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">No Meja</th>
+                        <th scope="col">Pesanan</th>
+                        <th scope="col">Jumlah</th>
+                        <th scope="col">Catatan</th>
+                        <th scope="col">Harga</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data['orders'] %}
+                    <tr>
+                        <th scope="row">{{ row[0] }}</th>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[6] }}</td>
+                        <td>{{ row[5] }}</td>
+                        <td>
+                            <form action="{{ url_for('disable_order', pesanan_id=row[0]) }}" method="POST">
+                                <button type="submit" class="btn btn-success"
+                                    {% if row[7] == 'disabled' %}disabled{% endif %}>
+                                    {% if row[7] == 'disabled' %}Pesanan Selesai{% else %}Pesanan Baru{% endif %}
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <hr>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

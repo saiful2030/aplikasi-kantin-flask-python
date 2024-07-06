@@ -1,0 +1,60 @@
+{%extends 'base_kasir.html'%}
+
+{%block title%}Tambah Menu{%endblock%}
+{%block content%}
+<div class="main-container">
+    <div class="xs-pd-20-10 pd-ltr-20">
+        <div class="title pb-20">
+            <h2 class="h3 mb-0">Kantin Amikom</h2>
+        </div>
+
+        <div class="pd-20 card-box mb-20">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Tambah Menu</h4>
+                </div>
+            </div>
+            <form action="{{url_for('tambah_menu_baru')}}" method="POST">
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Nama Menu</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" type="text" name="nama_menu" class="form-control"
+                            placeholder="Nama Menu" id="nama">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Harga</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" placeholder="Harga" type="text" name="harga2" class="form-control"
+                            placeholder="harga">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">kategori</label>
+                    <div class="col-sm-12 col-md-10">
+                        <select class="custom-select col-12" name="kategori" class="form-control" id="kategori">
+                            <option selected="">Kategori</option>
+                            <option value="1">makanan</option>
+                            <option value="2">minuman</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Deskripsi</label>
+                    <div class="col-sm-12 col-md-10">
+                        <textarea class="form-control" placeholder="Deskripsi" type="text" name="deskripsi"
+                            class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary pull-right"> Submit </button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

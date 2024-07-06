@@ -1,0 +1,36 @@
+{% extends 'base_user.html' %}
+
+{% block title %}Keranjang{% endblock %}
+{% block menu %}Keranjang{% endblock %}
+{% block content %}
+
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row row-cards">
+            <div class="col-12">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table table-vcenter table-mobile-md card-table">
+                            <thead>
+                                <tr>
+                                    <th>Nama Menu</th>
+                                    <th>Harga</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in items %}
+                                <tr>
+                                    <td data-label="Nama Menu">{{ item[1] }}</td>
+                                    <td data-label="Harga">Rp{{ item[2] }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

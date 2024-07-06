@@ -1,0 +1,60 @@
+{% extends 'base_user.html' %}
+
+{% block title %}Keranjang{% endblock %}
+{% block menu %}Keranjang{% endblock %}
+{% block content %}
+
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row row-cards">
+            <div class="col-12">
+                <form action="{{ url_for('checkout') }}" method="post">
+                    <div class="mb-3">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nomer Meja</label>
+                        <input type="text" class="form-control" placeholder="Nomer Meja" size="7" name="meja" required>
+                    </div>
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table table-vcenter table-mobile-md card-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nama Menu</th>
+                                        <th>Harga</th>
+                                        <th>Jumlah</th>
+                                        <th>Catatan</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in items %}
+                                    <tr>
+                                        <td>{{ item[1] }}</td>
+                                        <td>Rp{{ item[2] }}</td>
+                                        <td>
+                                            <input type="number" class="form-control" placeholder="Jumlah" size="1"
+                                                name="jumlah_{{ item[0] }}" required>
+                                        </td>
+                                        <td>
+                                            <textarea class="form-control" rows="2"
+                                                name="catatan_{{ item[0] }}"></textarea>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url_for('hapus_item', item_id=item[0]) }}"
+                                                class="btn btn-danger">Hapus</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Checkout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

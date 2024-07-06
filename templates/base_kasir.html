@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8" />
+    <title>{%block title%}{%endblock%}</title>
+
+    <!-- Site favicon -->
+    <link rel="logo-kantin.png" sizes="180x180" href="{{ url_for('static', filename='img/logo_rt.png')}}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/logo_rt.png')}}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/logo_rt.png')}}" />
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/styles/core.css') }}" />
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static', filename='vendors/styles/icon-font.min.css') }}" />
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static', filename='src/plugins/datatables/css/dataTables.bootstrap4.min.css') }}" />
+    <link rel="stylesheet" type="text/css"
+        href="{{ url_for('static', filename='src/plugins/datatables/css/responsive.bootstrap4.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/styles/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/responsive.bootstrap4.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/dataTables.bootstrap4.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/icon-font.min.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/core.css')}}" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2973766580778258"
+        crossorigin="anonymous"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-GBZ3SGGX85");
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                "gtm.start": new Date().getTime(),
+                event: "gtm.js"
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NXZMQSS");
+    </script>
+    <!-- End Google Tag Manager -->
+    {%block head%}{%endblock%}
+    <style>
+        .dropbtn {
+            background-color: white;
+            /* Ubah latar belakang menjadi transparan */
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 10px;
+            /* Hapus border */
+            box-shadow: white;
+            /* Hapus shadow */
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .custom-control {
+            flex: 1 0 45%;
+            /* Mengatur flex basis agar elemen dapat memiliki lebar maksimal sekitar 45% dari parent */
+            margin-bottom: 10px;
+            /* Memberikan jarak antar elemen */
+        }
+
+        /* Mengatur posisi Ahsan sebelah kanan dari Ahmad A */
+        .custom-control:nth-child(2n) {
+            margin-left: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-left">
+            <div class="search-toggle-icon bi bi-search" data-toggle="header_search"></div>
+        </div>
+        <div class="header-right">
+            <div class="dashboard-setting user-notification"></div>
+            <div class="user-info-dropdown">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="/order/" role="button" data-toggle="dropdown">
+                        <span class="user-icon">
+                            <img src="{{ url_for('static', filename='img/logo-kantin.png') }}" alt="" />
+                        </span>
+                        <span class="user-name">Sunday</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                        <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="left-side-bar">
+        <div class="brand-logo">
+            <a href="/order/" style="margin-top: 20%;">
+                <img src="{{ url_for('static', filename='img/logo-kantin.png') }}" alt="" class="dark-logo" />
+                <img src="{{ url_for('static', filename='img/logo-kantin.png') }}" alt="" class="light-logo" />
+            </a>
+            <div class="close-sidebar" data-toggle="left-sidebar-close">
+                <i class="ion-close-round"></i>
+            </div>
+        </div>
+        <div class="menu-block customscroll">
+            <div class="sidebar-menu">
+                <ul id="accordion-menu" style="margin-top: 45%;">
+                    <li>
+                        <a href="/order/" class="dropdown-toggle no-arrow">
+                            <span></span><span class="mtext">ORDER</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/edit_menu/" class="dropdown-toggle no-arrow">
+                            <span></span><span class="mtext">EDIT MENU</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/transaksi/" class="dropdown-toggle no-arrow">
+                            <span></span><span class="mtext">TRANSAKSI</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/logout/" class="dropdown-toggle no-arrow" style="margin-top: 45%;">
+                            <span></span><span class="mtext" style="color: red;">LOG OUT</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Content -->
+    {% block content %}{% endblock %}
+    <!-- End Content -->
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/core.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/process.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/layout-settings.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/apexcharts.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dashboard3.js') }}"></script>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0"
+            style="display: none; visibility: hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
+
+</html>
+
+<script>
+    // You can use JavaScript to fetch data from Flask and update the modal content
+    $(document).ready(function () {
+        // Make an AJAX request to the Flask server to get data
+        $.ajax({
+            type: 'GET',
+            url: '/get_data', // Assuming you have a Flask route to handle this request
+            success: function (data) {
+                // Update the modal content with the received data
+                $('#modal-content').text(data);
+            }
+        });
+    });
+</script>

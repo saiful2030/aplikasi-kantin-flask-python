@@ -1,0 +1,42 @@
+{%extends 'base_kasir.html'%}
+
+{%block title%}Order{%endblock%}
+{%block content%}
+<div class="main-container">
+    <div class="xs-pd-20-10 pd-ltr-20">
+        <div class="title pb-20">
+            <h2 class="h3 mb-0">Kantin Amikom</h2>
+        </div>
+
+        <div class="pd-20 card-box mb-30">
+            <div class="clearfix mb-20">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Catatan Transaksi</h4>
+                </div>
+            </div>
+            <table class="data-table table stripe hover nowrap">
+                <thead>
+                    <tr>
+                        <th scope="col">Id Transaksi</th>
+                        <th scope="col">Nama Pelanggan</th>
+                        <th scope="col">Nomer Pesanan</th>
+                        <th scope="col">Waktu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for row in hasil%}
+
+                    <tr>
+                        <th scope="row">{{row.0}}</th>
+                        <td>{{row.1}}</td>
+                        <td>{{row.2}}</td>
+                        <td>{{row.5}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+{%endblock%}

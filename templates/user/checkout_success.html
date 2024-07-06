@@ -1,0 +1,47 @@
+{% extends 'base_user.html' %}
+
+{% block title %}Pesanan Berhasil{% endblock %}
+
+{% block menu %}Pesanan Berhasil{% endblock %}
+
+{% block content %}
+
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row row-cards">
+            <div class="col-12">
+                <!-- Modal Dialog -->
+                <div class="modal" tabindex="-1" role="dialog" id="checkoutSuccessModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Pesanan Berhasil</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Pesanan Anda telah berhasil dibuat.</p>
+                                <p>Total harga: Rp {{ total_harga }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{{ url_for('menu') }}" class="btn btn-primary">Kembali ke Menu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Show modal on page load
+    window.onload = function () {
+        var myModal = new bootstrap.Modal(document.getElementById('checkoutSuccessModal'), {
+            keyboard: false
+        });
+        myModal.show();
+    };
+</script>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{%extends 'base_kasir.html'%}
+
+{%block title%}Edit Order{%endblock%}
+{%block content%}
+<div class="main-container">
+    <div class="xs-pd-20-10 pd-ltr-20">
+        <div class="title pb-20">
+            <h2 class="h3 mb-0">Kantin Amikom</h2>
+        </div>
+        <div class="pd-20 card-box mb-20">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Edit Order</h4>
+                </div>
+            </div>
+            <form action="{{url_for('proses_ubah_order')}}" method="POST">
+                {% for row in hasil %}
+                <div class="form-group row">
+                    <input type="hidden" name="nama" value="{{ row.1 }}">
+                    <label class="col-sm-12 col-md-2 col-form-label">Nama</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" type="text" name="nama_baru" class="form-control" placeholder="Nama"
+                            id="nama_baru" value="{{ row.1 }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">No Meja</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" type="text" name="meja" class="form-control" placeholder="No Meja"
+                            id="meja" value="{{ row.2 }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Nama Menu</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" type="text" name="nama_menu" class="form-control"
+                            placeholder="Nama Menu" id="nama_menu" value="{{ row.3 }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Harga</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control date-picker" placeholder="Harga" type="text" name="harga2"
+                            class="form-control" id="harga2" value="{{ row.4 }}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Catatan</label>
+                    <div class="col-sm-12 col-md-10">
+                        <textarea class="form-control" placeholder="Catatan" type="text" name="catatan"
+                            class="form-control">{{ row.5 }}</textarea>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary pull-right"> Submit </button>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    {%endblock%}
